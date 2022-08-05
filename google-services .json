@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "494106663593",
+    "project_id": "dribbox-72871",
+    "storage_bucket": "dribbox-72871.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494106663593:android:4c4d1ec42300cdbeec27b8",
+        "android_client_info": {
+          "package_name": "com.apptikar.dribbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494106663593-hjrenmj9nh5e6pc72n7onpf8bn1pfvn0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apptikar.dribbox",
+            "certificate_hash": "8b3ffb65ec480ae08c83f7ba6457e800275bc931"
+          }
+        },
+        {
+          "client_id": "494106663593-0b47uom6sp3lfehrlth9q0a3r6256tvk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY-ew2UOS47hG1G5NgNqmqTxsNwNnUH54"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494106663593-0b47uom6sp3lfehrlth9q0a3r6256tvk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
