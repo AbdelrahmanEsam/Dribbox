@@ -51,7 +51,6 @@ fun HomeScreen(
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.Top,
         ) {
-            Spacer(modifier = Modifier.size((screenHeight * 0.01).dp))
             Header(screenClassifier = screenClassifier ,modifier = Modifier.fillMaxSize(),text = "Your Dribbbox", icon = R.drawable.ic_union,20,25,20){
                 openAndCloseScope.launch {
                     scaffoldState.drawerState.open()
@@ -59,7 +58,7 @@ fun HomeScreen(
             }
             Spacer(modifier = Modifier
                 .fillMaxWidth()
-                .height(25.dp))
+                .height((screenHeight * 0.02).dp))
 //          CustomTextField(
 //              leadingIcon = Icon(painterResource(R.drawable.ic_search_icon), contentDescription = "search_icon"
 //                  , modifier = Modifier
@@ -113,7 +112,7 @@ fun HomeScreen(
             val minSize = if (screenClassifier is ScreenClassifier.FullyOpened &&
                 (screenClassifier.width.sizeClass == WindowSizeClass.Compact || screenClassifier.height.sizeClass == WindowSizeClass.Compact)) 120.sdp else 70.sdp
             LazyVerticalGrid(columns = GridCells.Adaptive(minSize = minSize),
-                modifier = Modifier.height((screenHeight * 0.8).dp),
+                modifier = Modifier.height((screenHeight * 0.75).dp),
                 verticalArrangement = Arrangement.spacedBy((screenWidth * 0.040).toInt().dp),
                 horizontalArrangement = Arrangement.spacedBy((screenWidth * 0.040).toInt().dp)
             ){

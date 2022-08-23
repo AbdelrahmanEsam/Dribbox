@@ -21,6 +21,7 @@ fun HomeScreenRoute(
     openAndCloseScope: CoroutineScope,
     scaffoldState: ScaffoldState,
     navController: NavHostController,
+    sideMenu: @Composable () -> Unit,
 ) {
     var adaptiveLayoutScreenType by rememberSaveable { mutableStateOf(AdaptiveLayoutScreenType.ScreenOnly)}
     adaptiveLayoutScreenType = screenClassifier.toAdaptiveLayoutScreenType(articleSelected = false)
@@ -29,14 +30,7 @@ fun HomeScreenRoute(
         AdaptiveLayoutScreenType.ScreenOnly ->     HomeScreen(modifier = modifier, openAndCloseScope = openAndCloseScope, scaffoldState = scaffoldState,navController = navController,screenClassifier = screenClassifier)
         AdaptiveLayoutScreenType.ListHalfAndDetailHalf -> {
            AdaptiveLayoutListHalfAndDetailHalf(screenClassifier = screenClassifier,
-            firstHalf = {
-
-                SideMenu(
-                    screenClassifier = screenClassifier,
-                    navController = navController,
-                    scaffoldState = scaffoldState,
-                    openAndCloseScope = openAndCloseScope)
-            }, secondHalf = {
+            firstHalf = { sideMenu() }, secondHalf = {
                     HomeScreen(
                         modifier = modifier,
                         openAndCloseScope = openAndCloseScope,
@@ -51,12 +45,8 @@ fun HomeScreenRoute(
         AdaptiveLayoutScreenType.ListOneThirdAndDetailThirds ->{
             AdaptiveLayoutListOneThirdAndDetailTwoThirds(
              firstHalf = {
-                 SideMenu(
-                     screenClassifier = screenClassifier,
-                     navController = navController,
-                     scaffoldState = scaffoldState,
-                     openAndCloseScope = openAndCloseScope,
-                 )},
+                 sideMenu()
+                         },
                  secondHalf  = {
                      HomeScreen(
                          modifier = modifier,

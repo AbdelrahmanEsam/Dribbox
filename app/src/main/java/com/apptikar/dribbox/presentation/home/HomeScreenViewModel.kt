@@ -18,7 +18,7 @@ class HomeScreenViewModel: ViewModel() {
         private set
 
 
-    var categoriesState by mutableStateOf<List<Folder>>(listOf(Folder("Mobile apps kdsklfjslkjfldsjlfs","December 20.2020")
+    var categoriesState by mutableStateOf(listOf(Folder("Mobile apps","December 20.2020")
     ,Folder("SVG Icons","December 14.2020"),
         Folder("Prototypes","Novemaber 22.2020"),
         Folder("Avatars","Novemaber 10.2020"),

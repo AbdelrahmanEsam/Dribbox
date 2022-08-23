@@ -26,6 +26,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.apptikar.dribbox.R
 import com.apptikar.dribbox.presentation.ui.theme.*
 import com.apptikar.dribbox.utils.sdp
@@ -38,11 +39,11 @@ fun Login() {
     val screenHeight = LocalConfiguration.current.screenHeightDp.dp
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     Box(modifier = Modifier
+        .background(BackgroundGray.copy(alpha = 0.2f))
         .fillMaxSize()
         .verticalScroll(rememberScrollState())) {
 
         Column(modifier = Modifier
-            .background(BackgroundGray.copy(alpha = 0.2f))
             .fillMaxSize()
             .drawBehind {
 
@@ -78,20 +79,20 @@ fun Login() {
 
             Spacer(modifier = Modifier.size(screenHeight * 0.1f))
             Image(painter = painterResource(R.drawable.ic_cloud), contentDescription = "cloudImage",modifier = Modifier
-                .width((180.sdp))
-                .height(180.sdp)
+                .width((180.dp))
+                .height(180.dp)
                 .absoluteOffset(x = screenWidth * 0.0f, y = screenHeight * 0.001f)
                 .aspectRatio(1f))
             Spacer(modifier = Modifier.size(screenHeight * 0.015f))
-            Text(text = "Welcome to", modifier = Modifier, fontSize = 25.textSdp, fontFamily =
+            Text(text = "Welcome to", modifier = Modifier, fontSize = 25.sp, fontFamily =
             Gilroy, color = PurpleDark, style = MaterialTheme.typography.body1)
             Spacer(modifier = Modifier.size(screenHeight * 0.015f))
-            Text(text = "Dirbbox", modifier = Modifier, fontSize = 40.textSdp, fontFamily =
+            Text(text = "Dirbbox", modifier = Modifier, fontSize = 40.sp, fontFamily =
             Gilroy, color = PurpleDark, style = MaterialTheme.typography.h5, fontWeight = FontWeight.W800)
             Spacer(modifier = Modifier.size(screenHeight * 0.015f))
             Text(text = "Best cloud storage platform for all \nbusiness and individuals to \nmanage there data \n" +
                     "\n" +
-                    "Join For Free.", modifier = Modifier,style = TextStyle(color = TintText,fontWeight = FontWeight.SemiBold, fontFamily = Gilroy, fontSize = 13.textSdp))
+                    "Join For Free.", modifier = Modifier,style = TextStyle(color = TintText,fontWeight = FontWeight.SemiBold, fontFamily = Gilroy, fontSize = 13.sp))
             Spacer(modifier = Modifier.size(screenHeight * 0.05f))
             Row(modifier = Modifier
                 .fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
@@ -100,18 +101,18 @@ fun Login() {
                     modifier = Modifier
                         .background(
                             color = SideMenu,
-                            shape = RoundedCornerShape(10.sdp)
+                            shape = RoundedCornerShape(10.dp)
                         )
-                        .padding(horizontal = 10.sdp)
+                        .padding(horizontal = 10.dp)
                         .width(screenWidth * 0.35f)
-                        .height(45.sdp)
+                        .height(45.dp)
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_fingerprint),
-                        contentDescription = "fingerPrint",tint = LightBlue, modifier = Modifier.size(15.sdp)
+                        contentDescription = "fingerPrint",tint = LightBlue, modifier = Modifier.size(15.dp)
                     )
                     Spacer(modifier = Modifier.size(screenWidth * 0.015f))
-                    Text(text = "Smart Id", fontFamily = Gilroy, fontWeight = FontWeight.SemiBold, fontSize = 15.textSdp, style = TextStyle(color =  LightBlue, shadow =  Shadow(
+                    Text(text = "Smart Id", fontFamily = Gilroy, fontWeight = FontWeight.SemiBold, fontSize = 15.sp, style = TextStyle(color =  LightBlue, shadow =  Shadow(
                         Gray, blurRadius = 10f, offset = Offset(10f,10f))))
                 }
                 TextButton(
@@ -119,19 +120,19 @@ fun Login() {
                     modifier = Modifier
                         .background(
                             color = LightBlue,
-                            shape = RoundedCornerShape(10.sdp)
+                            shape = RoundedCornerShape(10.dp)
                         )
-                        .padding(horizontal = 10.sdp)
+                        .padding(horizontal = 10.dp)
                         .width(screenWidth * 0.35f)
-                        .height(45.sdp)
+                        .height(45.dp)
                 ) {
 
 
-                    Text(text = "Sign in", fontFamily = Gilroy, fontWeight = FontWeight.SemiBold, fontSize = 15.textSdp, style = TextStyle(color =  White))
+                    Text(text = "Sign in", fontFamily = Gilroy, fontWeight = FontWeight.SemiBold, fontSize = 15.sp, style = TextStyle(color =  White))
                     Spacer(modifier = Modifier.size(screenWidth * 0.015f))
                     Icon(
                         painter = painterResource(R.drawable.ic_arrow),
-                        contentDescription = "fingerPrint",tint = White, modifier = Modifier.size(15.sdp)
+                        contentDescription = "fingerPrint",tint = White, modifier = Modifier.size(15.dp)
                     )
                 }
 
@@ -140,37 +141,37 @@ fun Login() {
             Spacer(modifier = Modifier.size(screenHeight * 0.05f))
             Row(modifier = Modifier
                 .fillMaxWidth()
-                .offset(y = (-10).sdp), horizontalArrangement = Arrangement.Center) {
-                Text(text = "Use Social Login", fontFamily = Gilroy, fontWeight = FontWeight.SemiBold, fontSize = 10.textSdp, style = TextStyle(color =  OnBackground))
+                .offset(y = (-10).dp), horizontalArrangement = Arrangement.Center) {
+                Text(text = "Use Social Login", fontFamily = Gilroy, fontWeight = FontWeight.SemiBold, fontSize = 10.sp, style = TextStyle(color =  OnBackground))
             }
             Spacer(modifier = Modifier.size(screenHeight * 0.03f))
             Row(modifier = Modifier
                 .fillMaxWidth()
-                .offset(y = (-10).sdp), horizontalArrangement = Arrangement.Center) {
+                .offset(y = (-10).dp), horizontalArrangement = Arrangement.Center) {
                 Row(modifier = Modifier.width(screenWidth * 0.45f), horizontalArrangement = Arrangement.SpaceBetween) {
                     Icon(
                         painter = painterResource(R.drawable.ic_instgram),
-                        contentDescription = "instgram",tint = TintPurple, modifier = Modifier.size(15.sdp)
+                        contentDescription = "instgram",tint = TintPurple, modifier = Modifier.size(15.dp)
                     )
                     Icon(
                         painter = painterResource(R.drawable.ic_twitter),
-                        contentDescription = "twitter",tint = TintPurple, modifier = Modifier.size(15.sdp)
+                        contentDescription = "twitter",tint = TintPurple, modifier = Modifier.size(15.dp)
                     )
                     Icon(
                         painter = painterResource(R.drawable.ic_facebook),
-                        contentDescription = "facebook",tint = TintPurple, modifier = Modifier.size(15.sdp)
+                        contentDescription = "facebook",tint = TintPurple, modifier = Modifier.size(15.dp)
                     )
                 }
             }
             Spacer(modifier = Modifier.size(screenHeight * 0.05f))
             Row(modifier = Modifier
                 .fillMaxWidth()
-                .offset(y = (-10).sdp), horizontalArrangement = Arrangement.Center) {
+                .offset(y = (-10).dp), horizontalArrangement = Arrangement.Center) {
                 Text(
                     text = "Create an account",
                     fontFamily = Gilroy,
                     fontWeight = FontWeight.SemiBold,
-                    fontSize = 15.textSdp,
+                    fontSize = 15.sp,
                     style = TextStyle(color = OnBackground)
                 )
             }
@@ -179,10 +180,10 @@ fun Login() {
 
 
 
-        Canvas(modifier = Modifier.width(50.sdp).height(50.sdp).offset(x = screenWidth * 0.6f, y = (-50).sdp)){
-
-            cloudDraw(size)
-        }
+//        Canvas(modifier = Modifier.width(50.dp).height(50.dp).offset(x = screenWidth * 0.6f, y = (5).sdp)){
+//
+//            cloudDraw(size)
+//        }
 
 
 

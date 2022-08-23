@@ -25,6 +25,7 @@ fun MyProfileRoute(
     openAndCloseScope: CoroutineScope,
     scaffoldState: ScaffoldState,
     navController: NavHostController,
+    sideMenu: @Composable ()-> Unit,
     ) {
     var adaptiveLayoutScreenType by rememberSaveable { mutableStateOf(AdaptiveLayoutScreenType.ScreenOnly) }
     adaptiveLayoutScreenType = screenClassifier.toAdaptiveLayoutScreenType(articleSelected = false)
@@ -34,12 +35,7 @@ fun MyProfileRoute(
         AdaptiveLayoutScreenType.ListHalfAndDetailHalf -> {
             AdaptiveLayoutListHalfAndDetailHalf(screenClassifier = screenClassifier,
                 firstHalf = {
-                    SideMenu(
-                        screenClassifier = screenClassifier,
-                        navController = navController,
-                        scaffoldState = scaffoldState,
-                        openAndCloseScope = openAndCloseScope,
-                    )
+                    sideMenu()
                 }, secondHalf = {
                     MyProfile(modifier = modifier,screenClassifier = screenClassifier)
                 }
@@ -49,12 +45,7 @@ fun MyProfileRoute(
         AdaptiveLayoutScreenType.ListOneThirdAndDetailThirds ->{
             AdaptiveLayoutListOneThirdAndDetailTwoThirds(
                 firstHalf = {
-                    SideMenu(
-                        screenClassifier = screenClassifier,
-                        navController = navController,
-                        scaffoldState = scaffoldState,
-                        openAndCloseScope = openAndCloseScope,
-                    )
+                   sideMenu()
                 },
                 secondHalf  = {
                     MyProfile(modifier = modifier,screenClassifier = screenClassifier)
@@ -64,12 +55,7 @@ fun MyProfileRoute(
             check(screenClassifier is ScreenClassifier.HalfOpened.TableTopMode)
             AdaptiveLayoutListAndDetailStacked(screenClassifier = screenClassifier,
                 firstHalf = {
-                    SideMenu(
-                        screenClassifier = screenClassifier,
-                        navController = navController,
-                        scaffoldState = scaffoldState,
-                        openAndCloseScope = openAndCloseScope,
-                    )},
+                   sideMenu() },
                 secondHalf  = {
                     MyProfile(
                         modifier = modifier,

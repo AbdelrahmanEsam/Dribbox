@@ -1,13 +1,10 @@
 package com.apptikar.dribbox.presentation.ui
 
-import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.DpSize
-import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import androidx.window.layout.WindowLayoutInfo
 import com.apptikar.dribbox.MainActivity
@@ -18,7 +15,6 @@ import com.apptikar.dribbox.presentation.ui.theme.DribboxTheme
 import com.apptikar.dribbox.utils.ScreenClassifier
 import com.apptikar.dribbox.utils.ScreenInfo
 import com.apptikar.dribbox.utils.WindowSizeClass
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 @Composable
@@ -39,7 +35,11 @@ val devicePostureValue by devicePosture.collectAsState()
         val scaffoldState = rememberScaffoldState(sizeAwareDrawerState)
         var isGestureEnabled by remember{ mutableStateOf(false)}
         val openAndCloseScope = rememberCoroutineScope()
-
+        val sideMenu : @Composable () -> Unit = {SideMenu(
+            screenClassifier = screenClassifier,
+            navController = navController,
+            scaffoldState = scaffoldState,
+            openAndCloseScope = openAndCloseScope)}
 
 
 
@@ -55,18 +55,14 @@ val devicePostureValue by devicePosture.collectAsState()
                 floatingActionButtonPosition = FabPosition.End ,
 
                 drawerContent = {
-                    SideMenu(
-                        screenClassifier = screenClassifier,
-                        navController = navController,
-                        scaffoldState = scaffoldState,
-                        openAndCloseScope = openAndCloseScope)
+                    sideMenu()
                 },
                 drawerGesturesEnabled =  isCompactAndHome && isGestureEnabled,
             ){paddingValues ->
 
             Row(Modifier.fillMaxSize()) {
                     DribboxNavGraph(screenClassifier = screenClassifier, navController = navController , modifier = Modifier.padding(paddingValues),scaffoldState,
-                        isHome = {   isGestureEnabled =  isGestureDestination(it) })
+                        isHome = {   isGestureEnabled =  isGestureDestination(it) },{sideMenu()})
 
             }
 

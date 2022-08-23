@@ -19,7 +19,6 @@ import com.apptikar.dribbox.presentation.home.HomeScreenRoute
 import com.apptikar.dribbox.presentation.login.Login
 import com.apptikar.dribbox.presentation.profile.MyProfileRoute
 import com.apptikar.dribbox.presentation.storage.StorageDetailRoute
-import com.apptikar.dribbox.presentation.storage.StorageDetails
 import com.apptikar.dribbox.presentation.ui.theme.BackgroundGray
 import com.apptikar.dribbox.utils.ScreenClassifier
 import com.apptikar.dribbox.utils.sdp
@@ -32,6 +31,7 @@ fun DribboxNavGraph(
     modifier: Modifier,
     scaffoldState: ScaffoldState,
     isHome: (String) -> Unit,
+    sideMenu: @Composable () -> Unit,
     ) {
 
 
@@ -49,7 +49,7 @@ fun DribboxNavGraph(
                 .fillMaxSize()
                 .background(BackgroundGray.copy(alpha = 0.2f))
                 .verticalScroll(rememberScrollState())
-                .padding(25.dp), openAndCloseScope = rememberCoroutineScope(), scaffoldState = scaffoldState,navController = navController
+                .padding(25.dp), openAndCloseScope = rememberCoroutineScope(), scaffoldState = scaffoldState,navController = navController,sideMenu
             )
         }
 
@@ -69,7 +69,7 @@ fun DribboxNavGraph(
 
         composable(Destinations.Profile){
             isHome(Destinations.Profile)
-            MyProfileRoute(modifier = Modifier
+            MyProfileRoute(sideMenu = sideMenu,modifier = Modifier
                 .fillMaxSize()
                 .background(BackgroundGray.copy(alpha = 0.2f))
                 .padding(horizontal = 5.sdp)

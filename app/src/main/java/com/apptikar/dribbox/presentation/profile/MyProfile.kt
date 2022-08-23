@@ -5,6 +5,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -20,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -41,6 +44,7 @@ import com.apptikar.dribbox.utils.ScreenClassifier
 import com.apptikar.dribbox.utils.WindowSizeClass
 import com.apptikar.dribbox.utils.sdp
 import com.apptikar.dribbox.utils.textSdp
+import kotlin.math.min
 
 @Composable
 fun MyProfile(modifier: Modifier,
@@ -55,7 +59,7 @@ fun MyProfile(modifier: Modifier,
     val cardAndHeaderHeight = (screenHeight * 0.5).dp
     val cardAndHeaderHeightPx = with(LocalDensity.current) { cardAndHeaderHeight.roundToPx().toFloat() }
     val cardAndHeaderOffsetHeightPx = remember { mutableStateOf(0f) }
-
+    val lazyGridState = rememberLazyGridState()
     val nestedScrollConnection = remember {
         object : NestedScrollConnection {
             override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
@@ -76,7 +80,16 @@ fun MyProfile(modifier: Modifier,
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.Top) {
 
-        Column(Modifier.wrapContentHeight().fillMaxWidth()) {
+        Column(
+            Modifier
+                .wrapContentHeight()
+                .fillMaxWidth()
+                .graphicsLayer {
+
+
+                    alpha = min(1f, 1f - (lazyGridState.firstVisibleItemIndex / 600f) )
+
+                }) {
             Spacer(modifier = Modifier.size((screenHeight * 0.02).toInt().dp))
             MyHeader(
                 screenClassifier = screenClassifier,
@@ -111,7 +124,8 @@ fun MyProfile(modifier: Modifier,
                 columns = GridCells.Adaptive(minSize = minSize),
                 modifier = Modifier.height((screenHeight * 0.40).dp),
                 verticalArrangement = Arrangement.spacedBy((screenHeight * 0.02).toInt().dp),
-                horizontalArrangement = Arrangement.spacedBy((screenWidth * 0.04).toInt().dp)
+                horizontalArrangement = Arrangement.spacedBy((screenWidth * 0.04).toInt().dp),
+                state = lazyGridState
             ) {
                 items(folders.size) { index ->
                     when (index) {
