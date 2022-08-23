@@ -154,11 +154,9 @@ fun CustomSideNavigator(
     scaffoldState: ScaffoldState,
     openAndCloseScope: CoroutineScope,
     ) {
-    var myIndicatorState by rememberSaveable{ mutableStateOf(IndicatorState.HOME) }
+
     val fontWeightIndex = rememberSaveable{ mutableStateOf(0)}
     val activity = (LocalContext.current as? Activity)
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-   val spaceSize  = (LocalConfiguration.current.screenHeightDp * 0.1).toInt().dp
 
 
 
@@ -197,14 +195,6 @@ fun CustomSideNavigator(
 
 
 
-
-
-
-
-     Surface(modifier = modifier.background(SideMenu)) {
-
-
-
          Column(
              modifier = modifier.verticalScroll(rememberScrollState()).background(SideMenu),
              horizontalAlignment = Alignment.Start
@@ -225,10 +215,10 @@ fun CustomSideNavigator(
                          .clickable(enabled = true, onClick = {
 
                              when (title) {
-                                 "Home" -> {navController.navigateSingleTopTo(Destinations.Home)}
+                                 "Home" -> navController.navigateSingleTopTo(Destinations.Home)
 
 
-                                 "Profile" ->{ navController.navigateSingleTopTo(Destinations.Profile) }
+                                 "Profile" -> navController.navigateSingleTopTo(Destinations.Profile)
 
                                  "Storage" -> navController.navigateSingleTopTo(Destinations.Details)
 
@@ -280,7 +270,7 @@ fun CustomSideNavigator(
 
 
 
-    }
+    
 
 
 
