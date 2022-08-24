@@ -81,12 +81,7 @@ fun MyProfile(modifier: Modifier,
             }
         }
     }
-//    Column(modifier = modifier
-//        .height(screenHeight.dp)
-//        .padding((screenWidth * 0.05).toInt().dp),
-//        horizontalAlignment = Alignment.Start,
-//        verticalArrangement = Arrangement.Top) {
-
+    
         Column(modifier = modifier
             .fillMaxSize()
             .padding((screenWidth * 0.05).toInt().dp)
