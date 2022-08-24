@@ -127,11 +127,14 @@ class StorageViewModel constructor(private val context: Application)  : AndroidV
            val  audiosPercentage = (audioSize.toDouble()/(totalMemorySize.value.toDouble()-freeMemorySize.value.toDouble()))
             other.value = (totalMemorySize.value-freeMemorySize.value) -(imagesSize+appsSize+videosSize + audioSize)
             otherPercentage.value = (other.value.toDouble()/(totalMemorySize.value.toDouble()-freeMemorySize.value.toDouble()))
-            listOfDataRows.value.add(ItemDetail("Images",imagesSize,imagesPercentage, PurpleDark))
-            listOfDataRows.value.add(ItemDetail("Apps",appsSize,appsPercentage, PureYellow))
-            listOfDataRows.value.add(ItemDetail("Videos",videosSize,videosPercentage, PureGreen))
-            listOfDataRows.value.add(ItemDetail("Audios",audioSize,audiosPercentage, LightBlue))
-            listOfDataRows.value.add(ItemDetail("Others",other.value,otherPercentage.value, Orange))
+            listOfDataRows.value.apply {
+                add(ItemDetail("Images",imagesSize,imagesPercentage, PurpleDark))
+                add(ItemDetail("Apps",appsSize,appsPercentage, PureYellow))
+                add(ItemDetail("Videos",videosSize,videosPercentage, PureGreen))
+                add(ItemDetail("Audios",audioSize,audiosPercentage, LightBlue))
+                add(ItemDetail("Others",other.value,otherPercentage.value, Orange))
+            }
+
         }
 
     }
